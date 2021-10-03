@@ -1,0 +1,1 @@
+export const iconSizeSmall=`@2x.png`;
