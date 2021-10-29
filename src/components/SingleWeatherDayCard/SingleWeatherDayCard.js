@@ -15,7 +15,7 @@ export class SingleWeatherDayCard extends Component{
        const datenum=new Date(date).toLocaleDateString('en-GB');
        const time=new Date(date).getUTCHours();
       
-    
+      // console.log(this.props.item)
         return(
 
          

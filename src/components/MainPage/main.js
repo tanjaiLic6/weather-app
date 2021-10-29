@@ -37,9 +37,9 @@ export class MainPage extends Component{
   getWetherForCity(){
     const result=getWeatherForFiveDays(this.state.searchedCity)
     .then((res)=>this.setState({cityInfo:res.city,listOfDays:res.list},
-     
+      
      ()=>{
-       
+       console.log(this.state.listOfDays)
          const day1Arr=[];
          const day2Arr=[];
          const day3Arr=[];
@@ -48,10 +48,14 @@ export class MainPage extends Component{
          const day6Arr=[];
          this.state.listOfDays.map((item)=>{
              const localDate=new Date(item.dt_txt).toLocaleDateString();
+             let k=(new Date(localDate).getTime()-this.state.today)/(1000 * 3600 * 24);
+
+             console.log(new Date(localDate).getTime(this.state.today),this.state.today)
+             console.log(k)
              if(new Date(localDate).getTime()==this.state.today){
                  day1Arr.push(item);
              }
-             else if((new Date(localDate).getTime()-this.state.today)/(1000 * 3600 * 24)==1){
+             else if(Math.round((new Date(localDate).getTime()-this.state.today)/(1000 * 3600 * 24))==1){
                  day2Arr.push(item);
              }
  
@@ -59,15 +63,15 @@ export class MainPage extends Component{
                  day3Arr.push(item);
              }
  
-             else if((new Date(localDate).getTime()-this.state.today)/(1000 * 3600 * 24)==3){
+             else if(Math.round((new Date(localDate).getTime()-this.state.today)/(1000 * 3600 * 24))==3){
                  day4Arr.push(item);
              }
  
-             else if((new Date(localDate).getTime()-this.state.today)/(1000 * 3600 * 24)==4){
+             else if(Math.round((new Date(localDate).getTime()-this.state.today)/(1000 * 3600 * 24))==4){
                  day5Arr.push(item);
              }
  
-             else if((new Date(localDate).getTime()-this.state.today)/(1000 * 3600 * 24)==5){
+             else if(Math.round((new Date(localDate).getTime()-this.state.today)/(1000 * 3600 * 24))==5){
                  day6Arr.push(item);
              }
  
@@ -80,7 +84,7 @@ export class MainPage extends Component{
              day5:day5Arr,
              day6:day6Arr})
      
-     }))
+     },()=>{console.log(this.state.day2)}))
  
  
  }
@@ -103,7 +107,7 @@ export class MainPage extends Component{
    }
 
     render(){
-
+        console.log(this.state.day3)
         return(
         <Fragment >
          <Header searchedCity={this.state.searchedCity} cityInfo={this.state.cityInfo} setSearchedCityState={(word)=>this.setSearchedCityState(word)} />
