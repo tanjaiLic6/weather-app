@@ -20,30 +20,18 @@ export class Searchbar extends Component{
          this.setState({searchedWord:event.target.value})
          
          
-         
-       
-         
     }
   
     updateCityAndDelteInput=()=>{
+        if(this.state.searchedWord!==''){
         this.props.setSearchedCityState(this.state.searchedWord);
-        this.setState({searchedWord:''});
+        this.setState({searchedWord:''});};
     }
    
-    // getCityFromSearch=()=>{
-    //     const word=this.state.searchedWord;
-    //     this.props.setSearchedCityState(word);
-    //     console.log(this.props.searchedCity);
-    // }
-
-    // componentDidUpdate(prevState){
-    //     if(this.state.value !== prevState.value){
-    //         this.setState({value:''});
-    //     }
-    // }
+   
 
     render(){
-        // const setSearchedCityState=this.props.setSearchedCityState;
+       
         
         return(
       
@@ -55,6 +43,7 @@ export class Searchbar extends Component{
                     aria-label="Search"
                     onChange={this.ontype}
                     value={this.state.searchedWord}
+                    onKeyPress={(e) => { if(e.key === 'Enter'&& this.state.searchedWord!=='') {e.preventDefault(); this.updateCityAndDelteInput()}  }}
                     
                 />
                 <Button variant="outline-success"
