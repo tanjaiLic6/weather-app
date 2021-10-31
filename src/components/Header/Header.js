@@ -23,7 +23,7 @@ export class Header extends Component{
     >
     </Nav>
     <Searchbar searchedCity={this.props.searchedCity} setSearchedCityState={this.props.setSearchedCityState}  />
-    <FCSwitch />
+    <FCSwitch changeTempValute={this.props.changeTempValute}/>
   </Navbar.Collapse>
 </Navbar>
 

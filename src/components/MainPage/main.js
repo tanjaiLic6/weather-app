@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import { SingleWeatherDayCard } from "../SingleWeatherDayCard/SingleWeatherDayCard";
 import { getWeatherForFiveDays } from "../../services/weatherDaysComunicator";
 import { Header } from "../Header/Header";
+import {Loading} from "../Loader/Loading";
 
 
 
@@ -16,7 +17,9 @@ export class MainPage extends Component{
      day4:null,
      day5:null,
      day6:null,
-     searchedCity:'Novi Sad'
+     searchedCity:'Novi Sad',
+     errorMsg:'',
+     CF:true
  }
 
  settingTime(){
@@ -33,9 +36,18 @@ export class MainPage extends Component{
     
  }
 
+  handleErrors(response) {
+    if (response.cod !=200) {
+        throw Error(response.message);
+    }
+    return response;
+}
+
 
   getWetherForCity(){
+      
     const result=getWeatherForFiveDays(this.state.searchedCity)
+    .then(this.handleErrors)
     .then((res)=>this.setState({cityInfo:res.city,listOfDays:res.list},
       
      ()=>{
@@ -49,9 +61,8 @@ export class MainPage extends Component{
          this.state.listOfDays.map((item)=>{
              const localDate=new Date(item.dt_txt).toLocaleDateString();
              let k=(new Date(localDate).getTime()-this.state.today)/(1000 * 3600 * 24);
-
-             console.log(new Date(localDate).getTime(this.state.today),this.state.today)
-             console.log(k)
+              console.log()
+            
              if(new Date(localDate).getTime()==this.state.today){
                  day1Arr.push(item);
              }
@@ -59,7 +70,7 @@ export class MainPage extends Component{
                  day2Arr.push(item);
              }
  
-             else if((new Date(localDate).getTime()-this.state.today)/(1000 * 3600 * 24)==2){
+             else if(Math.round((new Date (localDate).getTime()-this.state.today)/(1000 * 3600 * 24))==2){
                  day3Arr.push(item);
              }
  
@@ -84,9 +95,14 @@ export class MainPage extends Component{
              day5:day5Arr,
              day6:day6Arr})
      
-     },()=>{console.log(this.state.day2)}))
+     },()=>{console.log(this.state.day3,3)}))
+     .catch(res=>{console.log('er',res)
+       this.setState({errorMsg:res.message});
+    
+    })
  
- 
+    
+    
  }
 
 
@@ -101,24 +117,33 @@ export class MainPage extends Component{
     
       if(this.state.searchedCity!==prevState.searchedCity){
            this.getWetherForCity();
+           this.setState({errorMsg:''});
 
       }
    
    }
 
+   changeTempValute(){
+    this.setState({CF:!this.state.CF},()=>console.log(this.state.CF))
+}
+
     render(){
-        console.log(this.state.day3)
+      console.log(this.state.day2)
         return(
+        
         <Fragment >
-         <Header searchedCity={this.state.searchedCity} cityInfo={this.state.cityInfo} setSearchedCityState={(word)=>this.setSearchedCityState(word)} />
+   
+         <Header searchedCity={this.state.searchedCity} cityInfo={this.state.cityInfo} changeTempValute={()=>this.changeTempValute()} setSearchedCityState={(word)=>this.setSearchedCityState(word)} />
+         {this.state.listOfDays.length <1 && (<Loading /> )}
          {this.state.day2 && (
          <div>
-         <SingleWeatherDayCard  item={this.state.day1}/>
-         <SingleWeatherDayCard  item={this.state.day2}/>
-         <SingleWeatherDayCard  item={this.state.day3}/>
-         <SingleWeatherDayCard  item={this.state.day4}/>
-         <SingleWeatherDayCard  item={this.state.day5}/>
-         <SingleWeatherDayCard  item={this.state.day6}/>
+         {this.state.errorMsg && (<div>{this.state.errorMsg}</div>)}
+         <SingleWeatherDayCard  item={this.state.day1} CFStatus={this.state.CF}/>
+         <SingleWeatherDayCard  item={this.state.day2} CFStatus={this.state.CF}/>
+         <SingleWeatherDayCard  item={this.state.day3} CFStatus={this.state.CF}/>
+         <SingleWeatherDayCard  item={this.state.day4} CFStatus={this.state.CF}/>
+         <SingleWeatherDayCard  item={this.state.day5} CFStatus={this.state.CF}/>
+         <SingleWeatherDayCard  item={this.state.day6} CFStatus={this.state.CF}/>
          </div>
          
          )}
