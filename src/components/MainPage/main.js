@@ -19,8 +19,11 @@ export class MainPage extends Component{
      day6:null,
      searchedCity:'Novi Sad',
      errorMsg:'',
-     CF:true
+     CF:(window.localStorage.getItem('CF')?JSON.parse(window.localStorage.getItem('CF')):true)
+     
+    //  JSON.parse(window.localStorage.getItem('CF'))||true
  }
+
 
  settingTime(){
      const day=new Date().getDate();
@@ -124,11 +127,14 @@ export class MainPage extends Component{
    }
 
    changeTempValute(){
+    window.localStorage.removeItem('CF');
+    window.localStorage.setItem('CF',!this.state.CF)
     this.setState({CF:!this.state.CF},()=>console.log(this.state.CF))
 }
 
     render(){
-      console.log(this.state.day2)
+      console.log(window.localStorage.getItem('CF'))
+      console.log(this.state.CF)
         return(
         
         <Fragment >

@@ -20,6 +20,8 @@ export class SingleWeatherDayCard extends Component{
        const date=!!this.props.item.length?this.props.item[0].dt_txt : new Date();
        const datenum=new Date(date).toLocaleDateString('en-GB');
        const time=new Date(date).getUTCHours();
+
+       console.log(this.props)
       
 
         return(
