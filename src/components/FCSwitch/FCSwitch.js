@@ -12,7 +12,7 @@ export class FCSwitch extends React.Component{
       
         return(
 
-            <Button className='btn-secondary' onClick={()=>this.props.changeTempValute()}  > <span>C</span>/<span>F</span></Button>
+            <Button className='btn-secondary' style={{margin:'0 5px'}} onClick={()=>this.props.changeTempValute()}  > <span>C</span>/<span>F</span></Button>
         )
 
 

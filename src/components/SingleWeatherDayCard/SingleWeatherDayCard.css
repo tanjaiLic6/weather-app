@@ -1,3 +1,13 @@
 .card{
-    background-color: rgb(127, 255, 133);
+    background: #b0961c8c;
+    backdrop-filter: saturate(180%) blur(10px);
+}
+
+img{
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+.card p,span {
+    margin: 0 auto;
 }

@@ -137,12 +137,12 @@ export class MainPage extends Component{
       console.log(this.state.CF)
         return(
         
-        <Fragment >
+        <div>
    
          <Header searchedCity={this.state.searchedCity} cityInfo={this.state.cityInfo} changeTempValute={()=>this.changeTempValute()} setSearchedCityState={(word)=>this.setSearchedCityState(word)} />
          {this.state.listOfDays.length <1 && (<Loading /> )}
          {this.state.day2 && (
-         <div>
+         <div style={{background:'#B4C6A6'}}>
          {this.state.errorMsg && (<div>{this.state.errorMsg}</div>)}
          <SingleWeatherDayCard  item={this.state.day1} CFStatus={this.state.CF}/>
          <SingleWeatherDayCard  item={this.state.day2} CFStatus={this.state.CF}/>
@@ -154,7 +154,7 @@ export class MainPage extends Component{
          
          )}
          
-         </Fragment>
+         </div>
         )
 
 

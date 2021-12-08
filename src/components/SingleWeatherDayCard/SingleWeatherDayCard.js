@@ -30,14 +30,14 @@ export class SingleWeatherDayCard extends Component{
      <Fragment>
       {!!this.props.item.length&&
            (<Container>
-              <h3>{datenum}</h3> 
+              <h3 style={{color:'#a26830'}}>{datenum}</h3> 
               
 
             <Row>
             {this.props.item.map((item)=>{
                const hours=new Date(item.dt_txt);
                return (
-               <Col lg={true}> 
+               <Col xs={12} md={3} lg={1.5} className='gap-3 mt-2'> 
                 <div className='border card'>
                  <p>Time:{(new Date(hours).getHours()==0)?'24h':new Date(hours).getHours()+'h'}</p>
                  {this.props.CFStatus?(<span>Temperature:{getCelsiusFromKelvin(item.main.temp).toFixed(0)}°C </span>):
