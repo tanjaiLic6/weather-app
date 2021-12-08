@@ -1,6 +1,6 @@
 
 Weather app created with REACT JS. Data is fetched from free API - https://openweathermap.org 
-It is showing weather forecast for 5 day by hours. 
+It is showing weather forecast for 5 days by hours. 
 
 
 
