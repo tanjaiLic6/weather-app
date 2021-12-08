@@ -143,7 +143,7 @@ export class MainPage extends Component{
          {this.state.listOfDays.length <1 && (<Loading /> )}
          {this.state.day2 && (
          <div style={{background:'#B4C6A6'}}>
-         {this.state.errorMsg && (<div>{this.state.errorMsg}</div>)}
+         {this.state.errorMsg && (<div style={{color:'red',fontSize:'20px',textAlign:'center'}}>{this.state.errorMsg.toUpperCase()}</div>)}
          <SingleWeatherDayCard  item={this.state.day1} CFStatus={this.state.CF}/>
          <SingleWeatherDayCard  item={this.state.day2} CFStatus={this.state.CF}/>
          <SingleWeatherDayCard  item={this.state.day3} CFStatus={this.state.CF}/>
