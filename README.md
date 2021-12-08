@@ -1,3 +1,14 @@
+
+Weather app created with REACT JS. Data is fetched from free API - https://openweathermap.org 
+It is showing weather forecast for 5 day by hours. 
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
