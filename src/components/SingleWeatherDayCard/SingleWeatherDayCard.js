@@ -30,7 +30,7 @@ export class SingleWeatherDayCard extends Component{
      <Fragment>
       {!!this.props.item.length&&
            (<Container>
-              <h3 style={{color:'#a26830'}}>{datenum}</h3> 
+              <h3 style={{color:'rgb(78 83 78)'}}>{datenum}</h3> 
               
 
             <Row>

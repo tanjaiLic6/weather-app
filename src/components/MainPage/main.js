@@ -142,7 +142,7 @@ export class MainPage extends Component{
          <Header searchedCity={this.state.searchedCity} cityInfo={this.state.cityInfo} changeTempValute={()=>this.changeTempValute()} setSearchedCityState={(word)=>this.setSearchedCityState(word)} />
          {this.state.listOfDays.length <1 && (<Loading /> )}
          {this.state.day2 && (
-         <div style={{background:'#B4C6A6'}}>
+         <div style={{background:'#D3E4CD'}}>
          {this.state.errorMsg && (<div style={{color:'red',fontSize:'20px',textAlign:'center'}}>{this.state.errorMsg.toUpperCase()}</div>)}
          <SingleWeatherDayCard  item={this.state.day1} CFStatus={this.state.CF}/>
          <SingleWeatherDayCard  item={this.state.day2} CFStatus={this.state.CF}/>
