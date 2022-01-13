@@ -13,7 +13,7 @@ export  class Loading extends React.Component {
         type="Watch"
         color="#00BFFF"
         height={200}
-        width={200}
+        width={300}
         timeout={4000} //3 secs
         style={{textAlign: "center", marginTop:'20%'}}
 

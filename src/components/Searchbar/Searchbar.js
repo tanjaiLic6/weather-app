@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 export class Searchbar extends Component{
     state={
        searchedWord:'',
-      
+     test:'' 
        
       
     }
