@@ -14,7 +14,7 @@ export  class Loading extends React.Component {
         color="#00BFFF"
         height={200}
         width={200}
-        timeout={3000} //3 secs
+        timeout={4000} //3 secs
         style={{textAlign: "center", marginTop:'20%'}}
 
       />
